@@ -41,14 +41,16 @@ export default {
         choice: [{label: 'Male', val: 1}, {label: 'Female', val: 0}],
         rules: [(value) => !!value || 'Required'],
         value: null,
-        formLabel: 'gender'
+        formLabel: 'gender',
+        constraint: 'Pilihlah salah satu gender'
       },
       {
         title: 'Age',
         type: 'field',
         rules: [(value) => (!!value && value > 0 && value < 150) || 'Age is not valid'],
         value: null,
-        formLabel: 'age'
+        formLabel: 'age',
+        constraint: 'Masukkan rentang umur 1-149'
       },
       {
         title: 'Driving License',
@@ -56,14 +58,16 @@ export default {
         choice: [{label: 'Have', val: 1}, {label: "Don't have", val: 0}],
         rules: [(value) => !!value || 'Required'],
         value: null,
-        formLabel: 'driving_license'
+        formLabel: 'driving_license',
+        constraint: 'Pilih salah satu pilihan'
       },
       {
         title: 'Region Code',
         type: 'field',
         rules: [(value) => (!!value && value > 0 && value < 53) || 'Region code must be between 1 and 52'],
         value: null,
-        formLabel: 'region_code'
+        formLabel: 'region_code',
+        constraint: 'Masukkan angka dari 1-52'
       },
       {
         title: 'Previously Insured',
@@ -71,7 +75,8 @@ export default {
         choice: [{label: 'Yes', val:1}, {label: 'No', val: 0}],
         rules: [(value) => !!value || 'Required'],
         value: null,
-        formLabel: 'previously_insured'
+        formLabel: 'previously_insured',
+        constraint: 'Pilihlah salah satu pilihan'
       },
       {
         title: 'Vehicle Damage',
@@ -79,28 +84,32 @@ export default {
         choice: [{label: 'Yes', val: 1}, {label: 'No', val: 0}],
         rules: [(value) => !!value || 'Required'],
         value: null,
-        formLabel: 'vehicle_damage'
+        formLabel: 'vehicle_damage',
+        constraint: 'Pilihlah salah satu pilihan'
       },
       {
         title: 'Annual Premium',
         type: 'field',
         rules: [(value) => (!!value && value >= 0) || 'Annual Premium is not valid'],
         value: null,
-        formLabel: 'annual_premium'
+        formLabel: 'annual_premium',
+        constraint: 'Masukkan angka lebih dari 0'
       },
       {
         title: 'Channel Binned',
         type: 'field',
         rules: [(value) => (!!value && value > 0) || 'Channel Binned is not valid'],
         value: null,
-        formLabel: 'channel_binned'
+        formLabel: 'channel_binned',
+        constraint: 'Pilihlah salah satu pilihan'
       },
       {
         title: 'Vehicle Age',
         type: 'choice',
         choice: [{label: '< 1 year', val: 'new'}, {label: '1-2 year', val: 'mid'}, {label: '> 2 year', val: 'old'}],
         rules: [(value) => !!value || 'Required'],
-        value: null
+        value: null,
+        constraint: 'Pilihlah salah satu pilihan'
       }
     ],
     notifShow: false,
