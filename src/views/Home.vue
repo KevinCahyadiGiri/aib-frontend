@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app dark>Welcome to the Prediction System</v-app-bar>
+    <v-app-bar app dark>Welcome to the Cross-selling Prediction System</v-app-bar>
     <v-content class="container">
       <div v-for="form in forms" :key="form" class="question">
         <v-text-field required outlined v-if="form.type === 'field'" v-model="form.value" :label="form.title" :rules="form.rules"></v-text-field>
@@ -12,8 +12,13 @@
             :value="choice.val"
           ></v-radio>
         </v-radio-group>
+        <div class="hint">
+          {{form.constraint}}
+        </div>
       </div>
-      <v-btn dark block @click="sendDataJSON()">Predict</v-btn>
+      <v-btn dark block @click="sendDataJSON()" style="margin-bottom: 50px">Predict</v-btn>
+      <div>by: Nyoman Kevin Cahyadi Giri (18218001) | Muhamad Hudan Widzamil (18218003) | Vincentius Ian Widi Nugroho (18218034)</div>
+      <div>Sistem dan Teknologi Informasi</div>
     </v-content>
     <div class="notifContainer" v-if="notifShow">
       <div class="notifDiv">
@@ -215,5 +220,8 @@ export default {
 }
 .buttonDone {
   margin-top: 50px;
+}
+.hint {
+  color: grey;
 }
 </style>
