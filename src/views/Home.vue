@@ -101,12 +101,12 @@ export default {
         constraint: 'Masukkan angka lebih dari 0'
       },
       {
-        title: 'Channel Binned',
+        title: 'Channel',
         type: 'field',
-        rules: [(value) => (!!value && value > 0) || 'Channel Binned is not valid'],
+        rules: [(value) => (!!value && value > 0 && value < 164) || 'Channel is not valid'],
         value: null,
         formLabel: 'channel_binned',
-        constraint: 'Pilihlah salah satu pilihan'
+        constraint: 'Pilihlah channel dari 1-163'
       },
       {
         title: 'Vehicle Age',
@@ -121,32 +121,6 @@ export default {
     result: null
   }),
   methods: {
-    sendData() {
-      var bodyFormData = new FormData();
-      bodyFormData['tes'] = 'haii';
-      console.log(bodyFormData['tes'])
-      this.forms.forEach(val => {
-        if (val.title !== 'Vehicle Age') {
-          bodyFormData[val.formLabel] = val.value
-        }
-        else {
-          var yearValue = ['new', 'mid', 'old'];
-          yearValue.forEach(val => {
-            bodyFormData[val] = 0
-          })
-          bodyFormData[val.value] = 1;
-        }
-      })
-      this.$axios.post('http://127.0.0.1:5000/predict', bodyFormData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      }).then(res => {
-        console.log(res)
-      }).catch(err => {
-        console.log(JSON.stringify(err))
-      })
-    },
     sendDataJSON() {
       var bodyRequest = {};
       this.forms.forEach(val => {
@@ -167,7 +141,7 @@ export default {
         }
       })
       console.log(JSON.stringify(bodyRequest));
-      this.$axios.post('http://127.0.0.1:5000/json_predict', {
+      this.$axios.post('https://aibpredict.herokuapp.com/json_predict', {
         bodyRequest
       }).then(res => {
         console.log(JSON.stringify(res))
